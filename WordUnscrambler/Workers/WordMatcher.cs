@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using WordUnscrambler.Data;
 
 namespace WordUnscrambler.Workers
@@ -15,13 +14,13 @@ namespace WordUnscrambler.Workers
             {
                 foreach (var word in wordList)
                 {
-                    if (scrambledWord.Equals(word, StringComparison.OrdinalIgnoreCase))
+                    if (scrambledWord.Trim().Equals(word, StringComparison.OrdinalIgnoreCase))
                     {
-                        matchedWords.Add(BuildMatchedWord(scrambledWord, word));
+                        matchedWords.Add(BuildMatchedWord(scrambledWord.Trim(), word));
                     }
                     else
                     {
-                        var scrambledWordArray = scrambledWord.ToCharArray();
+                        var scrambledWordArray = scrambledWord.Trim().ToCharArray();
                         var wordArray = word.ToCharArray();
 
                         Array.Sort(scrambledWordArray);
@@ -32,7 +31,7 @@ namespace WordUnscrambler.Workers
 
                         if (sortedScrambledWord.Equals(sortedWord, StringComparison.OrdinalIgnoreCase))
                         {
-                            matchedWords.Add(BuildMatchedWord(scrambledWord, word));
+                            matchedWords.Add(BuildMatchedWord(scrambledWord.Trim(), word));
                         }
                     }
                 }
