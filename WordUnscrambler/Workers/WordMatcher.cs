@@ -7,7 +7,7 @@ namespace WordUnscrambler.Workers
 {
     class WordMatcher
     {
-        public List<MatchedWord> Match(string[] scrambledWords, string[] wordList)
+        public static List<MatchedWord> Match(string[] scrambledWords, string[] wordList)
         {
             var matchedWords = new List<MatchedWord>();
 
@@ -40,7 +40,7 @@ namespace WordUnscrambler.Workers
             return matchedWords;
         }
 
-        private MatchedWord BuildMatchedWord(string scrambledWord, string word)
+        private static MatchedWord BuildMatchedWord(string scrambledWord, string word)
         {
             MatchedWord matchedWord = new MatchedWord
             {
